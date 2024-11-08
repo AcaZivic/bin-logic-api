@@ -11,6 +11,6 @@ class CalcTestCase(SimpleTestCase):
     """Test the calc function."""
     def test_add_numbers(self):
         """Testing adding numbers."""
-        res = calc.add(5,6)
+        res = calc.add(5, 6)
 
-        self.assertEqual(res,11)
+        self.assertEqual(res, 11)

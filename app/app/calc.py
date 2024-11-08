@@ -2,6 +2,7 @@
 Calculator functions
 """
 
-def add(x,y):
+
+def add(x, y):
     """ADD x and y and return result."""
-    return x+y;
+    return x+y
