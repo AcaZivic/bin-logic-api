@@ -12,13 +12,19 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
       - name: Check out
         uses: actions/checkout@v2
+
+      # Korak za instalaciju docker-compose
+      - name: Install docker-compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version  # Ovaj korak proverava da li je instalacija uspela
 
       - name: Test
         run: docker-compose run --rm app sh -c "python manage.py test"
 
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
-        
